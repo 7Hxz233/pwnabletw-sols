@@ -1,0 +1,14 @@
+bash_revenge:
+    build: ./
+    volumes:
+        - ./chroot:/home/bash:ro
+        - ./share/xinetd:/etc/xinetd.d/bash:ro
+        - ./share/run.sh:/run.sh:ro
+        - ./share/flag:/flag:ro
+        - ./tmp:/tmp:ro
+    ports:
+        - "10206:4869"
+    expose:
+        - "4869"
+    cap_add:
+        - SYS_CHROOT 
